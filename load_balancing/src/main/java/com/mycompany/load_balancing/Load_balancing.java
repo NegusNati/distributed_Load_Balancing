@@ -1,8 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package com.mycompany.load_balancing;
+
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -19,34 +19,24 @@ import java.util.List;
 public class Load_balancing {
 
     public static void main(String[] args) {
-//        List<InetSocketAddress> serverAddresses = new ArrayList<>();
-//        serverAddresses.add(new InetSocketAddress("localhost", 8001));
-//        serverAddresses.add(new InetSocketAddress("localhost", 8002));
-//        serverAddresses.add(new InetSocketAddress("localhost", 8003));
-//
-//        LoadBalancer loadBalancer = new LoadBalancer(serverAddresses);
-//        loadBalancer.start();
 
-
-   List<Server> servers = new ArrayList<>();
-//        servers.add(new Server("192.168.1.1", 8080));
-//        servers.add(new Server("192.168.1.2", 8080));
-//        servers.add(new Server("192.168.1.3", 8080));        
-        servers.add(new Server("localhost", 8080));
+        List<Server> servers = new ArrayList<>();
+//initalize the current available servers (Tomcat and Galssfish), meaning their ports
+        servers.add(new Server("localhost", 8082));
         servers.add(new Server("localhost", 8080));
 
-        
-
+//create an instance of our load balancer class
         LoadB loadBalancer = new LoadB(servers);
 
-//        for (int i = 0; i < 100; i++) {
-//            loadBalancer.handleRequest(servera, "/path/to/request");
-//        }
-          for (Server server : servers) {
-            int port = server.getPort();
-            String request = server.getIpAddress();
+        // Example usage of the load balancer instances to round robin 
+        loadBalancer.handleRequest(8080, "/another/path");
+        loadBalancer.handleRequest(8080, "/yet/another/path");
+        loadBalancer.handleRequest(8080, "/yet/another/path/wh");
+        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh");
+        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh/nbfjkd");
+        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh/jknsajkldnla");
+        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh/jknsajkldnla/dkjhsda");
+        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh/jknsajkldnla/sadjksdsasa");
 
-            loadBalancer.handleRequest(port, request);
-        }
     }
 }

@@ -30,65 +30,39 @@ public class LoadB {
         return server;
     }
 
-//    public void handleRequest(String request) {
-//        Server server = getNextServer();
-//        System.out.println("Sending request " + request + " to server " + server.getIpAddress() + ":" + server.getPort());
-//    }
-    ///
-//    public void handleRequest(String requestUrl) {
-//        Server server = getNextServer();
-//
-//        try {
-//            // Open a connection to the server
-//            URL url = new URL("http://" + server.getIpAddress() + ":" + server.getPort() + requestUrl);
-//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//
-//            // Check if the server responded with a successful status code
-//            int statusCode = connection.getResponseCode();
-//            if (statusCode == HttpURLConnection.HTTP_OK) {
-//                // Read the response from the server
-//                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-//                String response = "";
-//                String inputLine;
-//                while ((inputLine = in.readLine()) != null) {
-//                    response += inputLine;
-//                }
-//                in.close();
-//
-//                System.out.println("Response from server " + server.getIpAddress() + ":" + server.getPort() + ": " + response);
-//            } else {
-//                System.out.println("Server " + server.getIpAddress() + ":" + server.getPort() + " returned status code " + statusCode);
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Error occurred while connecting to server " + server.getIpAddress() + ":" + server.getPort() + ": " + e.getMessage());
-//        }
-//    }
-   public void handleRequest(int port, String requestPath) {
-    Server server = getNextServer();
+    public void handleRequest(int port, String requestPath) {
+        Server server = getNextServer();
+        port = 80;
 
-    try {
-        // Open a connection to the server
-        URL url = new URL("http://" + requestPath + ":" + port);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-        // Check if the server responded with a successful status code
-        int statusCode = connection.getResponseCode();
-        if (statusCode == HttpURLConnection.HTTP_OK) {
-            // Read the response from the server
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String response = "";
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                response += inputLine;
+        try {
+            for (int i = 0; i < 100; i++) {
+                port = server.getPort();
             }
-            in.close();
+            // To open a connection to the server
+//        URL url = new URL("http://" + requestPath + ":" + port  );
+            URL url = new URL("http://" + server.getIpAddress() + ":" + port);
 
-            System.out.println("Response from server " + server.getIpAddress() + ":" + port + ": " + response);
-        } else {
-            System.out.println("Server " + server.getIpAddress() + ":" + port + " returned status code " + statusCode);
+//            URL url = new URL("http://" + server.getIpAddress() + ":" + port + requestPath);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            System.out.println(" after connection");
+            // Check if the server responded with a successful status code
+            int statusCode = connection.getResponseCode();
+            if (statusCode == HttpURLConnection.HTTP_OK) {
+                // Read the response from the server
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String response = "";
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response += inputLine;
+                }
+                in.close();
+                System.out.println(" In If case");
+                System.out.println("Response from server " + server.getIpAddress() + ":" + port + ": " + response);
+            } else {
+                System.out.println("Server " + server.getIpAddress() + ":" + port + " returned status code " + statusCode);
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred while connecting to server " + server.getIpAddress() + ":" + port + ": " + e.getMessage());
         }
-    } catch (Exception e) {
-        System.out.println("Error occurred while connecting to server " + server.getIpAddress() + ":" + port + ": " + e.getMessage());
     }
-}
 }
