@@ -28,15 +28,40 @@ public class Load_balancing {
 //create an instance of our load balancer class
         LoadB loadBalancer = new LoadB(servers);
 
+        System.out.println(" ===  === ");
+        System.out.println(" === lets use Round Robin algorithm for Load Balancing === ");
+        System.out.println(" ===  ===");
         // Example usage of the load balancer instances to round robin 
-        loadBalancer.handleRequest(8080, "/another/path");
-        loadBalancer.handleRequest(8080, "/yet/another/path");
-        loadBalancer.handleRequest(8080, "/yet/another/path/wh");
-        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh");
-        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh/nbfjkd");
-        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh/jknsajkldnla");
-        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh/jknsajkldnla/dkjhsda");
-        loadBalancer.handleRequest(8080, "/yet/another/path/jhsvadjh/jknsajkldnla/sadjksdsasa");
+        loadBalancer.handleRequest("/another/path");
+        loadBalancer.handleRequest("/yet/another/path");
+        loadBalancer.handleRequest("/yet/another/path/wh");
+        loadBalancer.handleRequest("/yet/another/path/jhsvadjh");
+        loadBalancer.handleRequest("/yet/another/path/jhsvadjh/nbfjkd");
+        loadBalancer.handleRequest("/yet/another/path/jhsvadjh/jknsajkldnla");
+        loadBalancer.handleRequest("/yet/another/path/jhsvadjh/jknsajkldnla/dkjhsda");
+        loadBalancer.handleRequest("/yet/another/path/jhsvadjh/jknsajkldnla/sadjksdsasa");
+
+        System.out.println("  ===  ===");
+        System.out.println("  === end of Round Robin ===");
+        System.out.println("  ===  ===");
+
+        RandomAlgo random = new RandomAlgo(servers);
+        System.out.println("  ===  ===");
+        System.out.println("  === lets try using Random algorithm for Load Balancing === ");
+        System.out.println("  ===  ===");
+
+        random.handleRequest("/another/path");
+        random.handleRequest("/yet/another/path");
+        random.handleRequest("/yet/another/path/wh");
+        random.handleRequest("/yet/another/path/jhsvadjh");
+        random.handleRequest("/yet/another/path/jhsvadjh/nbfjkd");
+        random.handleRequest("/yet/another/path/jhsvadjh/jknsajkldnla");
+        random.handleRequest("/yet/another/path/jhsvadjh/jknsajkldnla/dkjhsda");
+        random.handleRequest("/yet/another/path/jhsvadjh/jknsajkldnla/sadjksdsasa");
+
+        System.out.println("  ===  ===");
+        System.out.println("  === end of Random algorithm ===");
+        System.out.println("  ===  ===");
 
     }
 }

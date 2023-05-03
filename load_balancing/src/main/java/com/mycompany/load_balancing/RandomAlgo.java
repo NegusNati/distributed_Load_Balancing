@@ -4,30 +4,38 @@
  */
 package com.mycompany.load_balancing;
 
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
+
 
 /**
  *
  * @author wku-cslab1
  */
-public class LoadB {
-
+public class RandomAlgo {
     private List<Server> servers;
-    private int currentIndex;
 
-    public LoadB(List<Server> servers) {
+    public RandomAlgo(List<Server> servers) {
         this.servers = servers;
-        this.currentIndex = 0;
     }
 
     public Server getNextServer() {
-        Server server = servers.get(currentIndex);
-        currentIndex = (currentIndex + 1) % servers.size(); //impleamenting round robin 
-        return server;
+        // implement random algorithm for Load Balancing
+        
+//        Random random = new Random(servers);
+         int randomIndex = new Random().nextInt(servers.size());
+         Server server = servers.get(randomIndex);
+          return server;
+          
+          
+        
+
     }
 
     public void handleRequest( String requestPath) {
@@ -40,7 +48,7 @@ public class LoadB {
 //        URL url = new URL("http://" + requestPath + ":" + port  );
             URL url = new URL("http://" + server.getIpAddress() + ":" + port);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            System.out.println(" after connection is created");
+            System.out.println(" after connection is created ");
             // Check if the server responded with a successful status code
             int statusCode = connection.getResponseCode();
             if (statusCode == HttpURLConnection.HTTP_OK) {
