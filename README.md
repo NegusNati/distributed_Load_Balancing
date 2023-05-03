@@ -2,6 +2,12 @@
 
 This a simple program to demonstarte Load balancing in java using Round Robin and Random algorithms withn the help of multiple built in methods and user defined methods. 
 
+Design of the Load Balancer for our Tomcat and Glassfish servers
+ 
+  <img src="https://user-images.githubusercontent.com/84500378/236057543-21da1d90-9a56-48f6-bba3-0133af961f7e.png" width="900" height="400">
+
+
+
 to run this on your machine you just need to have 
 
           - two severs running on 8080 amd 8082 port(you can configure others or edit them in the main class)
