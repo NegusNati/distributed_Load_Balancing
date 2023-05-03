@@ -17,5 +17,8 @@ Then just clone this repoitory:
 
 <img src="https://user-images.githubusercontent.com/84500378/235253804-61d61bb5-5caf-4554-affe-4a417cdf640a.png" width="1000" height="500">
 
+And also added class response from Random Algorithm for Laod Balancing 
+
+<img src="https://user-images.githubusercontent.com/84500378/236042029-72b19634-702d-4de1-aa1a-8fdba6cea4db.png" width="1000" height="500">
 
                <<<  ====================================================================================  >>>
