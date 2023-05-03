@@ -48,7 +48,7 @@ public class RandomAlgo {
 //        URL url = new URL("http://" + requestPath + ":" + port  );
             URL url = new URL("http://" + server.getIpAddress() + ":" + port);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            System.out.println(" after connection is created ");
+            System.out.println(" new http request ");
             // Check if the server responded with a successful status code
             int statusCode = connection.getResponseCode();
             if (statusCode == HttpURLConnection.HTTP_OK) {
@@ -61,7 +61,7 @@ public class RandomAlgo {
                     // + "\n"
                 }
                 in.close();
-                System.out.println(" If all goes well");
+                System.out.println(" If all goes well with the Server connection");
                 System.out.println("Response from server " + server.getIpAddress() + ":" + port + ": " + response);
             } else {
                 System.out.println("Server " + server.getIpAddress() + ":" + port + " returned status code " + statusCode);
