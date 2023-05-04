@@ -1,6 +1,6 @@
 ## 	Design and Implementation of a Distributed Load Balancing System with Java Load Balancer
 
-This a simple program to demonstarte Load balancing in java using Round Robin and Random algorithms withn the help of multiple built in methods and user defined methods. 
+This a simple program to demonstarte Load balancing in java using Round Robin and Random algorithms with the help of multiple built in methods and user defined methods. 
 
 Design of the Load Balancer for our Tomcat and Glassfish servers
  
